@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+
+  h1 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h2 {
+    @apply text-lg font-semibold;
+  }
+
+  p {
+    @apply text-sm text-slate-700 leading-relaxed;
+  }
+}
