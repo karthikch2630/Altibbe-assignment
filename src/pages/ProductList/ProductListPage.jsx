@@ -20,22 +20,17 @@ export default function ProductListPage() {
   };
 
   /** Initial load */
- useEffect(() => {
-  const timer = setTimeout(() => {
-    setIsLoading(false);
-  }, 300);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
 
-  return () => clearTimeout(timer);
-}, []);
-
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredProducts = productsMock
-    .filter((p) =>
-      p.name.toLowerCase().includes(search.toLowerCase())
-    )
-    .filter((p) =>
-      statusFilter ? p.status === statusFilter : true
-    )
+    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    .filter((p) => (statusFilter ? p.status === statusFilter : true))
     .sort((a, b) =>
       sortBy === "name"
         ? a.name.localeCompare(b.name)
@@ -77,7 +72,12 @@ export default function ProductListPage() {
                     setStatusFilter(e.target.value);
                     triggerSoftLoading();
                   }}
-                  className="rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm"
+                  className="
+            rounded-md border border-slate-300 bg-white
+            px-3 py-2.5 text-sm text-slate-700
+            focus:border-indigo-500 focus:outline-none
+            focus:ring-2 focus:ring-indigo-500
+          "
                 >
                   <option value="">All statuses</option>
                   <option value="Draft">Draft</option>
@@ -93,9 +93,7 @@ export default function ProductListPage() {
                   }}
                   viewMode={viewMode}
                   onViewToggle={() => {
-                    setViewMode(
-                      viewMode === "grid" ? "list" : "grid"
-                    );
+                    setViewMode(viewMode === "grid" ? "list" : "grid");
                     triggerSoftLoading();
                   }}
                 />
@@ -138,12 +136,7 @@ export default function ProductListPage() {
                   strokeWidth="2"
                 >
                   <circle cx="11" cy="11" r="7" />
-                  <line
-                    x1="21"
-                    y1="21"
-                    x2="16.65"
-                    y2="16.65"
-                  />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
               </div>
 
@@ -152,8 +145,8 @@ export default function ProductListPage() {
               </h3>
 
               <p className="mt-2 max-w-sm text-sm text-slate-600 leading-relaxed">
-                No product disclosures match the current search or
-                filter selection.
+                No product disclosures match the current search or filter
+                selection.
               </p>
 
               <p className="mt-1 text-xs text-slate-500">
